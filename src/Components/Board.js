@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 
 import Row from './Row'
 
+// Creer un plateau de puissance 4
 const initBoard = (row, col) => {
   let board = []
   for (let r = 0; r < row; r++) {
@@ -15,12 +16,13 @@ const initBoard = (row, col) => {
   return board
 }
 
+// Cherche un vainqueur à chaque tour
 const searchWin = (board, rowIndex, colIndex, currentPlayer) => {
   var row = board.length
   var col = board[0].length
   var count;
   var shift;
-
+  // En cas récurrence  count prend + 1
   var newCount = (rowIndex, colIndex, currentPlayer) => {
     if (board[rowIndex][colIndex] === currentPlayer) {
       return count + 1;
@@ -76,7 +78,7 @@ class Board extends Component {
       board: initBoard(this.props.row, this.props.col)
     };
   }
-
+  // moteur du jeu
   game = (colIndex) => {
     for (let r = 0; r < this.props.row; r++) {
       if (this.state.board[r][colIndex] === 0) {

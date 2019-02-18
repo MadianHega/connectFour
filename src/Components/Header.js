@@ -10,6 +10,7 @@ class Header extends Component {
       fetchError: false
     };
   }
+  // Requete backend
   componentDidUpdate(prevProps) {
     if (this.props.winning !== prevProps.winning) {
       fetch("http://127.0.0.1:3000/hallOfFame", {
